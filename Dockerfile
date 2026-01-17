@@ -16,9 +16,10 @@ WORKDIR /app
 COPY --from=builder /app/target/release/auto-protokoll /app/auto-protokoll
 COPY Templates ./Templates
 COPY Rocket.toml ./Rocket.toml
+ENV ROCKET_ADDRESS=0.0.0.0
+ENV ROCKET_PORT=$PORT
 
-ENV ENV ROCKET_ADDRESS=0.0.0.0
-ENV ROCKET_PORT=${PORT}
+
 
 EXPOSE 8000
 CMD ["./auto-protokoll"]
